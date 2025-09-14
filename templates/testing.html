@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osoniq CRM - Premium Detailing Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #e0f7ff 0%, #f8f4e9 100%);
+            color: #2d3748;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 32px;
+            color: #6A8F6B;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: #6A8F6B;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(106, 143, 107, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: #6A8F6B; }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #6A8F6B;
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: #6A8F6B;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #4a5568;
+            margin-bottom: 40px;
+            max-width: 700px;
+            line-height: 1.5;
+        }
+
+        .features-section {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .features-title {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            color: #6A8F6B;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border: 2px solid rgba(106, 143, 107, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(106, 143, 107, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #6A8F6B;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        .feature-title {
+            font-weight: 700;
+            color: #6A8F6B;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .feature-desc {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .signup-form {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin: 40px 0;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .form-title {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #6A8F6B;
+        }
+
+        .input-group {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        input[type="email"] {
+            flex: 1;
+            padding: 18px 22px;
+            border: 2px solid #E5E5E5;
+            border-radius: 12px 0 0 12px;
+            font-size: 1.1rem;
+            font-family: 'Nunito', sans-serif;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #6A8F6B;
+            box-shadow: 0 0 0 3px rgba(106, 143, 107, 0.3);
+        }
+
+        button {
+            background: #6A8F6B;
+            color: white;
+            border: none;
+            padding: 0 35px;
+            border-radius: 0 12px 12px 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover { background: #5a7f5b; transform: translateY(-2px); }
+        button:active { transform: translateY(0); }
+
+        .form-note {
+            font-size: 1rem;
+            color: #718096;
+            line-height: 1.5;
+        }
+
+        footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            color: #718096;
+            border-top: 2px solid rgba(106, 143, 107, 0.2);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: #718096;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #6A8F6B;
+            transform: translateY(-5px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .tagline { font-size: 1.2rem; }
+            .nav-links { display: none; }
+            .features-grid { grid-template-columns: 1fr; }
+            .input-group { flex-direction: column; }
+            input[type="email"] { border-radius: 12px; margin-bottom: 15px; }
+            button { border-radius: 12px; padding: 18px; }
+            footer { flex-direction: column; gap: 25px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-spa"></i></div>
+            Osoniq CRM
+        </div>
+        <div class="nav-links">
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1>Coming Soon</h1>
+        <p class="tagline">Osoniq CRM isn’t just software; it’s your partner in creating a seamless, professional, and premium detailing experience.</p>
+
+        <div class="features-section">
+            <h2 class="features-title">Everything You Need to Manage Your Detailing Business</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h3 class="feature-title">Online Booking</h3>
+                    <p class="feature-desc">Let customers book services 24/7 with our intuitive booking system</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3 class="feature-title">Live Employee Tracking</h3>
+                    <p class="feature-desc">Monitor your team's location and job status in real-time</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3 class="feature-title">Invoicing & Revenue Tracking</h3>
+                    <p class="feature-desc">Automated invoicing and comprehensive financial reports</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="feature-title">Marketing Tracking</h3>
+                    <p class="feature-desc">Track campaign performance and customer acquisition costs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3 class="feature-title">Live Analytics</h3>
+                    <p class="feature-desc">City-based booking analytics and performance metrics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="feature-title">Mobile App</h3>
+                    <p class="feature-desc">Manage your business on-the-go with our mobile application</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="signup-form">
+            <h3 class="form-title">Get notified when we launch</h3>
+            <form action="/subscribe" method="post">
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit">Notify Me</button>
+                </div>
+            </form>
+            <p class="form-note">We'll send you an email as soon as we're ready. No spam, unsubscribe anytime.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p class="copyright">© 2023 Osoniq CRM. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+</div>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = document.querySelector('input[type="email"]').value;
+        if (email && isValidEmail(email)) {
+            alert('Thanks for your interest! We\'ll notify you when we launch.');
+            document.querySelector('input[type="email"]').value = '';
+        } else {
+            alert('Please enter a valid email address.');
+        }
+    });
+
+    function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+</script>
+</body>
+</html>
